@@ -1,0 +1,30 @@
+[
+  {
+    "country": "FR",
+    "name": "Paris"
+  },
+  {
+    "country": "FR",
+    "name": "Lyon"
+  },
+  {
+    "country": "EN",
+    "name": "Londres"
+  },
+  {
+    "country": "MD",
+    "name": "Edinets"
+  },
+  {
+    "country": "US",
+    "name": "New York"
+  },
+  {
+    "country": "US",
+    "name": "Kansas"
+  },
+  {
+    "country": "IT",
+    "name": "Rome"
+  }
+]

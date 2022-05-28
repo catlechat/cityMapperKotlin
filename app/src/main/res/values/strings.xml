@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">KotlinFinalProject</string>
+    <string name="city_file_name">en_cities.json</string>
+    <string name="no_city_file_found">No city available, try again later..</string>
+    <string name="choose_city">Choose a city</string>
+    <string name="next_city">What would be the next city?</string>
+    <string name="vote_city">Vote for next city !</string>
+    <string name="default_text">[default text]</string>
+</resources>
