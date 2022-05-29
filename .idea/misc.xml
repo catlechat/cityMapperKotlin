@@ -3,15 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/ic_baseline_location_city_green24.xml" value="0.148" />
+        <entry key="app/src/main/res/drawable/roundbutton.xml" value="0.148" />
         <entry key="app/src/main/res/layout/activity_choose_city.xml" value="0.14127268031023554" />
         <entry key="app/src/main/res/layout/activity_launcher.xml" value="0.15070921985815602" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.14387031408308004" />
+        <entry key="app/src/main/res/layout/activity_settings.xml" value="0.44102606585645304" />
         <entry key="app/src/main/res/layout/fragment_city.xml" value="0.2932781602484156" />
       </map>
     </option>
-  </component>
-  <component name="ProjectPlainTextFileTypeManager">
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/ivan/ceaicovschi/kotlinfinalproject/MainActivity.kt" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />

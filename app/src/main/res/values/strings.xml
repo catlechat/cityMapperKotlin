@@ -6,4 +6,12 @@
     <string name="next_city">What would be the next city?</string>
     <string name="vote_city">Vote for next city !</string>
     <string name="default_text">[default text]</string>
+    <string name="default_city">Default City</string>
+    <string name="exit">x</string>
+    <string name="app_settings">App settings</string>
+    <string name="account">Account</string>
+    <string name="signin">Sign In</string>
+    <string name="contact_us">Contact us</string>
+    <string name="share">Share</string>
+    <string name="version">Version 10.56</string>
 </resources>

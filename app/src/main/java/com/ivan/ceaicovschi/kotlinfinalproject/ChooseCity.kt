@@ -1,8 +1,11 @@
 package com.ivan.ceaicovschi.kotlinfinalproject
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.view.View
+import android.widget.Button
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
@@ -32,6 +35,15 @@ class ChooseCity : AppCompatActivity() {
             ft.add(R.id.city_container,frag)
         }
         ft.commit()
+
+
+
+        val addNewCityButton = findViewById<View>(R.id.addCityButton) as Button
+        addNewCityButton.setOnClickListener {
+            intent = Intent(this@ChooseCity, Settings::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 }
 

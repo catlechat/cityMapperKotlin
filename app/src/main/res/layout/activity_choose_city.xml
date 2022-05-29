@@ -56,7 +56,8 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:text="@string/next_city"
+            android:id="@+id/addCityButton"
+            android:text="@string/vote_city"
             android:textColor="@color/white"
             android:backgroundTint="@color/orange"
             android:layout_margin="30dp"/>
