@@ -1,14 +1,20 @@
-package com.ivan.ceaicovschi.kotlinfinalproject
+package com.ivan.ceaicovschi.kotlinfinalproject.fragment
 
+import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
-import android.widget.Button
+import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat.startActivityForResult
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.fragment.findNavController
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -18,6 +24,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.ivan.ceaicovschi.kotlinfinalproject.R
+import kotlinx.android.synthetic.main.fragment_settings.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -25,19 +33,27 @@ import kotlinx.coroutines.withContext
 
 const val REQUEST_CODE_SIGN_IN = 0
 
-class Settings : AppCompatActivity() {
+class Settings : Fragment() {
 
     private lateinit var gso: GoogleSignInOptions
     private lateinit var googleSignInCLient: GoogleSignInClient
     private lateinit var auth: FirebaseAuth
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_settings, container, false)
+    }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_settings)
-
-        val signInButton = findViewById<View>(R.id.sign_in_btn)
-        val signOutButton = findViewById<View>(R.id.sign_out_btn)
+    @SuppressLint("ResourceType")
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val signInButton = view.sign_in_btn
+        val signOutButton = view.sign_out_btn
+        val fm: FragmentManager = requireFragmentManager()
+        val ft: FragmentTransaction = fm.beginTransaction()
 
         auth = FirebaseAuth.getInstance()
         gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -45,18 +61,16 @@ class Settings : AppCompatActivity() {
             .requestEmail()
             .build()
 
-        googleSignInCLient = GoogleSignIn.getClient(this, gso)
+        googleSignInCLient = GoogleSignIn.getClient(view.context, gso)
 
-        val chooseCity = findViewById<View>(R.id.choose_city) as Button
+        val chooseCity = view.choose_city
         chooseCity.setOnClickListener {
-            intent = Intent(this@Settings, ChooseCity::class.java)
-            startActivity(intent)
-            finish()
+            findNavController().navigate(R.id.action_settings_to_chooseCity)
         }
 
-        val backButton = findViewById<View>(R.id.backButton) as Button
+        val backButton = view.backButton
         backButton.setOnClickListener {
-            startActivity(Intent(this@Settings, ChooseCity::class.java))
+            findNavController().navigate(R.id.action_settings_to_chooseCity)
         }
 
         signInButton.setOnClickListener {
@@ -65,10 +79,10 @@ class Settings : AppCompatActivity() {
 
         signOutButton.setOnClickListener {
             Firebase.auth.signOut()
-            googleSignInCLient.signOut().addOnCompleteListener(this) {
-                Toast.makeText(this, "Signed out", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this, Settings::class.java))
-                finish()
+            activity?.let { it1 ->
+                googleSignInCLient.signOut().addOnCompleteListener(it1) {
+                    Toast.makeText(it1, "Signed out", Toast.LENGTH_SHORT).show()
+                }
             }
             signInButton.visibility = View.VISIBLE
             signOutButton.visibility = View.GONE
@@ -78,8 +92,8 @@ class Settings : AppCompatActivity() {
             signInButton.visibility = View.GONE
             signOutButton.visibility = View.VISIBLE
         }
-    }
 
+    }
 
     private fun signIn() {
         val signInIntent = googleSignInCLient.signInIntent
@@ -95,37 +109,36 @@ class Settings : AppCompatActivity() {
                 firebaseAuthWithGoogle(account!!)
             } catch (e: ApiException) {
                 Log.w(TAG, "Google sign in failed", e)
-                Toast.makeText(this, "Google sign in failed", Toast.LENGTH_SHORT).show()
+                Toast.makeText(view?.context, "Google sign in failed", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
     private fun firebaseAuthWithGoogle(account: GoogleSignInAccount) {
         val credential = GoogleAuthProvider.getCredential(account.idToken, null)
-        auth.signInWithCredential(credential)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    val user = auth.currentUser
-                    Toast.makeText(this, "Successfully signed in with Google", Toast.LENGTH_SHORT)
-                        .show()
-                    CoroutineScope(Dispatchers.Main).launch {
-                        withContext(Dispatchers.IO) {
-                            val user = auth.currentUser
-                            if (user != null) {
-                                runOnUiThread {
-                                    Toast.makeText(
-                                        applicationContext,
-                                        "Successfully signed in with Google" + user.displayName,
-                                        Toast.LENGTH_LONG
-                                    ).show()
+        activity?.let {
+            auth.signInWithCredential(credential)
+                .addOnCompleteListener(it) { task ->
+                    if (task.isSuccessful) {
+                        val user = auth.currentUser
+                        CoroutineScope(Dispatchers.Main).launch {
+                            withContext(Dispatchers.IO) {
+                                val user = auth.currentUser
+                                if (user != null) {
+                                    Handler(Looper.getMainLooper()).post {
+                                        Toast.makeText(
+                                            it,
+                                            "Successfully signed in with Google" + user.displayName,
+                                            Toast.LENGTH_LONG
+                                        ).show()
+                                        findNavController().navigate(R.id.action_settings_self)
+                                    }
                                 }
-                                val intent = Intent(this@Settings, Settings::class.java)
-                                startActivity(intent)
-                                finish()
                             }
                         }
+
                     }
                 }
-            }
+        }
     }
 }

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_details.xml"
+    app:startDestination="@id/launcherFragment">
+
+    <fragment
+        android:id="@+id/chooseCity"
+        android:name="com.ivan.ceaicovschi.kotlinfinalproject.ChooseCity"
+        android:label="activity_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_chooseCity_to_settings"
+            app:destination="@id/settings" />
+    </fragment>
+    <fragment
+        android:id="@+id/settings"
+        android:name="com.ivan.ceaicovschi.kotlinfinalproject.fragment.Settings"
+        android:label="Settings" >
+        <action
+            android:id="@+id/action_settings_to_chooseCity"
+            app:destination="@id/chooseCity" />
+        <action
+            android:id="@+id/action_settings_self"
+            app:destination="@id/settings" />
+    </fragment>
+    <fragment
+        android:id="@+id/launcherFragment"
+        android:name="com.ivan.ceaicovschi.kotlinfinalproject.fragment.LauncherFragment"
+        android:label="fragment_launcher"
+        tools:layout="@layout/fragment_launcher" >
+        <action
+            android:id="@+id/action_launcherFragment_to_chooseCity"
+            app:destination="@id/chooseCity" />
+    </fragment>
+
+</navigation>

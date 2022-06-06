@@ -1,27 +1,38 @@
 package com.ivan.ceaicovschi.kotlinfinalproject
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import android.widget.Button
-import android.widget.ImageButton
-import androidx.appcompat.app.AppCompatActivity
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.fragment.findNavController
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.ivan.ceaicovschi.kotlinfinalproject.fragment.CityFragment
+import kotlinx.android.synthetic.main.fragment_choose_city.view.*
 import java.io.IOException
 
 
-class ChooseCity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_choose_city)
-        val fm: FragmentManager = supportFragmentManager
+class ChooseCity : Fragment() {
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_choose_city, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val fm: FragmentManager = requireFragmentManager()
         val ft:FragmentTransaction = fm.beginTransaction()
 
-        val jsonFileString = getJsonDataFromAsset(applicationContext, getString(R.string.city_file_name))
+        val jsonFileString = getJsonDataFromAsset(view.context, getString(R.string.city_file_name))
         if (jsonFileString != null) {
             val gson = Gson()
             val listCityType = object : TypeToken<List<City>>() {}.type
@@ -38,13 +49,12 @@ class ChooseCity : AppCompatActivity() {
 
 
 
-        val addNewCityButton = findViewById<View>(R.id.addCityButton) as Button
+        val addNewCityButton = view.addCityButton
         addNewCityButton.setOnClickListener {
-            intent = Intent(this@ChooseCity, Settings::class.java)
-            startActivity(intent)
-            finish()
+            findNavController().navigate(R.id.action_chooseCity_to_settings)
         }
     }
+
 }
 
 
