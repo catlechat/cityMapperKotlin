@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "494189889884",
+    "project_id": "citymapperkotlin",
+    "storage_bucket": "citymapperkotlin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:494189889884:android:05b826601a723bb9e71999",
+        "android_client_info": {
+          "package_name": "com.ivan.ceaicovschi.kotlinfinalproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "494189889884-sj4gu1ebbuhe2nua47o7ioocc5segf64.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ivan.ceaicovschi.kotlinfinalproject",
+            "certificate_hash": "19c9239a73dc7733547f95e31489c39b8b66cfe5"
+          }
+        },
+        {
+          "client_id": "494189889884-et4ufl0uhbs4t85qgjrvmq866u7gfu2f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEiFdtvITOeJ-mMXHx8lzTUmFd3RigHV0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "494189889884-et4ufl0uhbs4t85qgjrvmq866u7gfu2f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
