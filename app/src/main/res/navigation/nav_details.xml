@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/chooseCity"
-        android:name="com.ivan.ceaicovschi.kotlinfinalproject.ChooseCity"
+        android:name="com.ivan.ceaicovschi.kotlinfinalproject.fragment.ChooseCity"
         android:label="activity_settings"
         tools:layout="@layout/fragment_settings" >
         <action

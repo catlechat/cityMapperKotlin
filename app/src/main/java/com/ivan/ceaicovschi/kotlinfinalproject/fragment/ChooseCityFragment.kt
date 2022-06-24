@@ -1,4 +1,4 @@
-package com.ivan.ceaicovschi.kotlinfinalproject
+package com.ivan.ceaicovschi.kotlinfinalproject.fragment
 
 import android.content.Context
 import android.os.Bundle
@@ -11,7 +11,7 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.fragment.findNavController
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.ivan.ceaicovschi.kotlinfinalproject.fragment.CityFragment
+import com.ivan.ceaicovschi.kotlinfinalproject.R
 import kotlinx.android.synthetic.main.fragment_choose_city.view.*
 import java.io.IOException
 

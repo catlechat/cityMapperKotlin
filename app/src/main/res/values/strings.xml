@@ -17,4 +17,12 @@
     <string name="version">Version 10.56</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="start">Start</string>
+    <string name="where_are_we_going">Where are we going ?</string>
+    <string name="use_curent_position">Use curent position</string>
+    <string name="bourg_la_reine_exemple">Bourg-La-Reine (exemple)</string>
+    <string name="home">Home</string>
+    <string name="work">Work</string>
+    <string name="adjust">Adjust</string>
+
 </resources>

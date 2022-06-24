@@ -3,13 +3,37 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.1645" />
+        <entry key="app/src/main/res/drawable/ic_baseline_add_location_alt_24.xml" value="0.1645" />
+        <entry key="app/src/main/res/drawable/ic_baseline_calendar_today_40.xml" value="0.1645" />
+        <entry key="app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.1645" />
+        <entry key="app/src/main/res/drawable/ic_baseline_gps_fixed_40.xml" value="0.1645" />
+        <entry key="app/src/main/res/drawable/ic_baseline_history_24.xml" value="0.172" />
+        <entry key="app/src/main/res/drawable/ic_baseline_history_40.xml" value="0.1645" />
+        <entry key="app/src/main/res/drawable/ic_baseline_location_city_24.xml" value="0.1645" />
         <entry key="app/src/main/res/drawable/ic_baseline_location_city_green24.xml" value="0.148" />
+        <entry key="app/src/main/res/drawable/ic_baseline_location_on_24.xml" value="0.1645" />
+        <entry key="app/src/main/res/drawable/ic_baseline_search_40.xml" value="0.1645" />
+        <entry key="app/src/main/res/drawable/ic_baseline_share_24.xml" value="0.1645" />
+        <entry key="app/src/main/res/drawable/ic_baseline_star_40.xml" value="0.1645" />
         <entry key="app/src/main/res/drawable/roundbutton.xml" value="0.148" />
+        <entry key="app/src/main/res/drawable/rounded_bg_green.xml" value="0.1865" />
+        <entry key="app/src/main/res/drawable/rounded_bg_green_dark.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/rounded_bg_green_light.xml" value="0.1865" />
+        <entry key="app/src/main/res/drawable/rounded_bg_grey.xml" value="0.172" />
+        <entry key="app/src/main/res/drawable/rounded_bg_white.xml" value="0.1865" />
+        <entry key="app/src/main/res/drawable/rounded_bg_white_border.xml" value="0.1645" />
         <entry key="app/src/main/res/layout/activity_choose_city.xml" value="0.14127268031023554" />
         <entry key="app/src/main/res/layout/activity_launcher.xml" value="0.15070921985815602" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.14387031408308004" />
         <entry key="app/src/main/res/layout/activity_settings.xml" value="0.44102606585645304" />
+        <entry key="app/src/main/res/layout/fragment_choose_city.xml" value="0.13082673702726474" />
         <entry key="app/src/main/res/layout/fragment_city.xml" value="0.2932781602484156" />
+        <entry key="app/src/main/res/layout/fragment_departure.xml" value="0.2719924926757813" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.13082673702726474" />
+        <entry key="app/src/main/res/layout/fragment_launcher.xml" value="0.13082673702726474" />
+        <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.13082673702726474" />
+        <entry key="app/src/main/res/layout/rounded_bg_green.xml" value="0.13038698328935797" />
       </map>
     </option>
   </component>
