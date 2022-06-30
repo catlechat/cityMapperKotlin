@@ -11,10 +11,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
+import androidx.navigation.navArgument
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -25,11 +28,12 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.ivan.ceaicovschi.kotlinfinalproject.R
+import com.ivan.ceaicovschi.kotlinfinalproject.retrofit.RetrofitClient
+import com.ivan.ceaicovschi.kotlinfinalproject.routes.JourneysRoutes
+import com.ivan.ceaicovschi.kotlinfinalproject.routes.JourneysService
+import com.ivan.ceaicovschi.kotlinfinalproject.routes.JourneysService.journeys
 import kotlinx.android.synthetic.main.fragment_settings.view.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 
 const val REQUEST_CODE_SIGN_IN = 0
 
@@ -93,6 +97,7 @@ class Settings : Fragment() {
             signOutButton.visibility = View.VISIBLE
         }
 
+        getJourneys()
     }
 
     private fun signIn() {
@@ -140,5 +145,17 @@ class Settings : Fragment() {
                     }
                 }
         }
+    }
+
+     @OptIn(DelicateCoroutinesApi::class)
+     fun getJourneys(){
+         GlobalScope.launch {
+             val journeys = JourneysService.journeys.getJourneys("2.3749036;48.8467927","2.37657;48.871786")
+             if (journeys.isSuccessful && journeys.body() != null){
+                 Log.d("Req", "getJourneys: " + journeys.body()!!.journeys[0])
+             } else {
+                 Log.d("E", "getJourneys: " + (journeys.errorBody()?.string()))
+             }
+         }
     }
 }
